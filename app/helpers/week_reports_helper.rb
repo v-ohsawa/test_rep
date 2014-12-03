@@ -1,0 +1,2 @@
+module WeekReportsHelper
+end

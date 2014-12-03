@@ -1,0 +1,20 @@
+<% @all_reports.each do |all_report| %>
+	<% if current_user.admin? %>
+		<tr>
+			<td><%= all_report.user.name %></td>
+			<td><%= all_report.project.name %></td>
+			<td><%= simple_format(all_report.done) %></td>
+			<td><%= simple_format(all_report.understood) %></td>
+			<td><%= simple_format(all_report.next) %></td>
+			<td><%= link_to "削除",all_report, :method => :delete,data: {confirm: "本当に削除しますか？" },title: all_report.done,class: "btn btn-danger" %></td>
+		</tr>
+	<% else %>
+		<tr>
+			<td><%= all_report.user.name %></td>
+			<td><%= all_report.project.name %></td>
+			<td><%= simple_format(all_report.done) %></td>
+			<td><%= simple_format(all_report.understood) %></td>
+			<td><%= simple_format(all_report.next) %></td>
+		</tr>
+	<% end %>
+<% end %>

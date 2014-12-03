@@ -1,0 +1,26 @@
+<h4 class="text-center">パスワードを変更しましょう</h4>
+
+<div class="row timeout" style="display:none;">
+	<div class="text-center col-xs-6 col-xs-offset-3">
+		<%= form_for @user_setting, :url => user_setting_path do |f| %>
+			<%= render 'error_messages' %>
+
+		<div class="form-group">
+			<%= f.hidden_field :worker_num, value: @user_setting.worker_num %>
+		</div>
+
+		<div class="form-group">
+			<%= f.hidden_field :name, value: @user_setting.name %>
+		</div>
+
+		<%= f.label :password, "パスワードを入力してください" %>
+		<%= f.password_field :password, class: "form-control text-center" %>
+
+		<%= f.label :password_confirmation, "もう一度入力してください" %>
+		<%= f.password_field :password_confirmation, class: "form-control text-center" %>
+
+		<%= f.submit "変更する", class: "btn btn-lg btn-primary col-xs-12 m-top m-bottom" %>
+	<% end %>
+
+	</div>
+</div>

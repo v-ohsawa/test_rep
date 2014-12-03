@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group_id: 1
+  name: MyString
+  worker_num: 1
+  password_digest: MyString
+  remember_token: MyString
+  admin: false
+
+two:
+  group_id: 1
+  name: MyString
+  worker_num: 1
+  password_digest: MyString
+  remember_token: MyString
+  admin: false

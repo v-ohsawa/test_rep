@@ -1,0 +1,73 @@
+
+		<!--モーダルの開始ボタン-->
+		<section>
+			<h4 class="text-center">
+				<button class="btn btn-info btn-lg m-bottom" data-toggle="modal" data-target="#modal_month">
+					週報を検索する
+				</button>
+			</h4>
+		</section>
+
+		<!--モーダル開始-->
+		<div class="modal fade" id="modal_month" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content col-xs-12 text-center">
+
+					<!--モーダルヘッダ-->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">週報検索</h4>
+					</div>
+
+					<!--モーダルコンテンツ-->
+					<div class="modal-body">
+						<section>
+							<%= form_tag("/search_week_or_month") do %>
+
+								<!--週報・月報選択-->
+								<label>どちらを検索しますか？</label>
+								<div class="btn-group p-top m-bottom" data-toggle="buttons">
+									<label class="btn btn-default active"><%= radio_button  :item, :search_target, "週報", {:checked => true} %>週報</label>
+									<label class="btn btn-default"><%= radio_button  :item, :search_target, "月報" %>月報</label>
+								</div>
+
+								<!--日付指定-->
+								<div class="form-group col-xs-12">
+									<label>目的の週や月を含む日付を選択して下さい</label>
+									<%= text_field  :item, :date, {value: @start_day.strftime('%Y年%m月%d日'),class: "form-control datetimepicker"} %>
+								</div>
+
+								<script>
+									$(".datetimepicker").datetimepicker({
+ 										lang:'ja',
+ 										timepicker:false,
+ 										format:"Y年m月d日"
+									});
+								</script>
+
+								<!--プロジェクト指定-->
+								<div class="form-group col-xs-12">
+									<label for="exampleInputEmail1">プロジェクトを選んで下さい</label>
+									<%= collection_select :item, :project_id, Project.all.order(:code), :id, :project_id_and_name, {:include_blank => "全てのプロジェクト",:selected => @project},{class: "form-control"} %>
+								</div>
+
+								<!--メンバー指定-->
+								<div class="form-group col-xs-12">
+									<label for="exampleInputEmail1">メンバーを選んで下さい</label>
+									<%= collection_select :item, :user_id, User.where.not(admin:true).order(:worker_num), :id, :user_id_and_name, {:include_blank => "全員",:selected => @user},{class: "form-control"} %>
+								</div>
+
+								<!--ボタン-->
+								<div class="actions col-xs-12">
+									<%= submit_tag "完了", class: "btn btn-success m-bottom col-xs-6 col-xs-offset-3" %>
+									<button type="button" class="btn btn-default m-bottom col-xs-6 col-xs-offset-3" data-dismiss="modal">閉じる</button>
+								</div>
+
+							<% end %>
+						</section>
+					</div>
+					<!--モーダルコンテンツ終了-->
+				</div>
+			</div>
+		</div>
+		<!--モーダル終了-->

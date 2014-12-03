@@ -1,0 +1,12 @@
+<% @week_reports.each do |week_report| %>
+	<tr>
+		<td><%= week_report.project.name %></td>
+		<td><%= simple_format(week_report.done) %></td>
+		<td><%= simple_format(week_report.understood) %></td>
+		<td><%= simple_format(week_report.next) %></td>
+		<td>
+			<%= link_to "編集する", edit_week_report_path(week_report),class: "btn btn-primary" %>
+			<%= link_to "削除する",week_report, :method => :delete,data: {confirm: "本当に削除しますか？" },title: week_report.done,class: "btn btn-danger" %>
+		</td>
+	</tr>
+<% end %>

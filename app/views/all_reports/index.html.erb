@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col-xs-12">
+
+		<!--ページタイトル-->
+		<h4 class="text-center m-bottom">週報一覧</h4>
+
+		<!--週タイトル-->
+		<section>
+			<h4 class="text-center m-bottom timeout" style="display:none;">
+				<%= @start_day.strftime('%Y年%m月%d日') + "-" + @end_day.strftime('%Y年%m月%d日') %>
+			</h4>
+		</section>
+
+		<%= render 'modal_search' %>
+		<!--週報の中身が出力されます-->
+		<table class="table col-xs-12">
+
+			<!--管理者？-->
+			<% if current_user.admin?%>
+				<thead>
+					<tr>
+						<th class="col-xs-1">名前</th>
+						<th class="col-xs-1">プロジェクト</th>
+						<th class="col-xs-4">やったこと</th>
+						<th class="col-xs-4">わかったこと</th>
+						<th class="col-xs-4">つぎやること</th>
+						<th class="col-xs-1">操作</th>
+					</tr>
+				</thead>
+
+			<!--一般ユーザー-->
+			<% else %>
+				<thead>
+					<tr>
+						<th class="col-xs-1">名前</th>
+						<th class="col-xs-1">プロジェクト</th>
+						<th class="col-xs-4">やったこと</th>
+						<th class="col-xs-3">わかったこと</th>
+						<th class="col-xs-3">つぎやること</th>
+					</tr>
+				</thead>
+			<% end %>
+
+			<tbody class="timeout" style="display:none;">
+				<!--週報アイテムを個別に出力-->
+				<%= render 'report' %>
+			</tbody>
+
+		</table>
+		<!--週報テーブル終了-->
+
+	</div>
+</div>

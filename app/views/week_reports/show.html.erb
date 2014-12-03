@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @week_report.user_id %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @week_report.project_id %>
+</p>
+
+<p>
+  <strong>Done:</strong>
+  <%= @week_report.done %>
+</p>
+
+<p>
+  <strong>Understood:</strong>
+  <%= @week_report.understood %>
+</p>
+
+<p>
+  <strong>Next:</strong>
+  <%= @week_report.next %>
+</p>
+
+<p>
+  <strong>Start day:</strong>
+  <%= @week_report.start_day %>
+</p>
+
+<%= link_to 'Edit', edit_week_report_path(@week_report) %> |
+<%= link_to 'Back', week_reports_path %>
