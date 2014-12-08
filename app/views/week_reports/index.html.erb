@@ -3,13 +3,24 @@
 		<h4 class="text-center">
 			<%= render 'user_info' %>の週報
 		</h4>
-		<h4 class="text-center timeout" style="display:none;">
+		<h4 class="text-center timeout">
 			<%= render 'week_display' %>
 		</h4>
 			<div class="text-center">
-				<%= link_to "前の週へ",{controller:"week_reports", action:"change_week",start:@start_day - 1.week}, class: "btn btn-info btn-lg" %>
-				<%= link_to "週報を追加する",{controller:"week_reports", action:"new", start:@start_day},class: "btn btn-success btn-lg" %>
-				<%= link_to "次の週へ",{controller:"week_reports", action:"change_week",start:@start_day + 1.week}, class: "btn btn-info btn-lg" %>
+				<div class="btn-group" role="group">
+					<%= link_to "Prev",{controller:"week_reports", action:"change_week",start:@start_day - 1.week}, class: "btn btn-info btn-lg" %>
+					<%= link_to "Next",{controller:"week_reports", action:"change_week",start:@start_day + 1.week}, class: "btn btn-info btn-lg" %>
+				</div>
+				<div class="btn-group">
+					<%= link_to "週報を作成する",{controller:"week_reports", action:"new", start:@start_day},class: "btn btn-success btn-lg" %>
+					<button type="button" class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><%= link_to "先週の週報をコピーする",{controller:"week_reports", action:"copy_item", start:@start_day} %></li>
+					</ul>
+				</div>
 			</div>
 		<!--週報の中身が出力されます-->
 		<table class="table col-xs-12">
@@ -22,7 +33,7 @@
 					<th class="col-xs-1">操作</th>
 				</tr>
 			</thead>
-			<tbody class="timeout" style="display:none;">
+			<tbody class="timeout">
 			<%= render partial: 'report' %>
 			</tbody>
 		</table>

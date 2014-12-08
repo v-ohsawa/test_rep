@@ -5,9 +5,9 @@
 		<%= form_for(@group) do |f| %>
 		<%= render 'error_messages' %>
 		<%= f.label :name, "グループ名" %>
-		<%= f.text_field :name, class: "form-control text-center m-bottom" %>
-		<%= f.submit "更新する", class: "btn btn-lg btn-primary col-xs-12 m-bottom m-top" %>
-		<%= link_to '前に戻る', groups_path, class: "btn btn-lg btn-danger col-xs-12 m-bottom m-top" %>
+		<%= f.text_field :name, class: "form-control text-center", required: true %>
+		<%= f.submit "更新する", class: "btn btn-lg btn-primary btn-block m-bottom" %>
+		<%= link_to '前に戻る', groups_path, class: "btn btn-lg btn-danger btn-block" %>
 	<% end %>
 	</div>
 </div>

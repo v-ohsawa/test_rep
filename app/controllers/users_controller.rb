@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:edit, :update, :destroy]
 	def index
-		@users = User.all
+		@users = User.all.where('id>1')
 	end
 	def new
 		@user = User.new

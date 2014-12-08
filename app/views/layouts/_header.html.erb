@@ -43,6 +43,8 @@
 							<li class="divider"></li>
 							<li><%= link_to "プロジェクト管理", {controller:"projects", action:"index", id:current_user.id} %></li>
 							<li class="divider"></li>
+							<li><%= link_to "グループ管理", {controller:"groups", action:"index", id:current_user.id} %></li>
+							<li class="divider"></li>
 							<% else %>
 							<% end %>
 							<li><%= link_to "サインアウト", signout_path, method: "delete" %></li>
@@ -77,7 +79,7 @@
 						$(function(){
 							switch(storage.getItem('font-size')){
 								case '12':
-									$("body").css("font-size","12px");
+									$("body,textarea").css("font-size","12px");
 									$(".f-small").addClass("active");
 									$(".f-medium").removeClass("active");
 									$(".f-big").removeClass("active");

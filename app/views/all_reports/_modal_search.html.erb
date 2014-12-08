@@ -47,19 +47,25 @@
 
 								<!--プロジェクト指定-->
 								<div class="form-group col-xs-12">
-									<label for="exampleInputEmail1">プロジェクトを選んで下さい</label>
+									<label>プロジェクトを選んで下さい</label>
 									<%= collection_select :item, :project_id, Project.all.order(:code), :id, :project_id_and_name, {:include_blank => "全てのプロジェクト",:selected => @project},{class: "form-control"} %>
 								</div>
 
 								<!--メンバー指定-->
 								<div class="form-group col-xs-12">
-									<label for="exampleInputEmail1">メンバーを選んで下さい</label>
+									<label>メンバーを選んで下さい</label>
 									<%= collection_select :item, :user_id, User.where.not(admin:true).order(:worker_num), :id, :user_id_and_name, {:include_blank => "全員",:selected => @user},{class: "form-control"} %>
+								</div>
+
+								<!--グループ指定-->
+								<div class="form-group col-xs-12">
+									<label>グループを選んで下さい</label>
+									<%= collection_select :item, :group_id, Group.all, :id, :name, {:include_blank => "指定なし",:selected => @group},{class: "form-control"} %>
 								</div>
 
 								<!--ボタン-->
 								<div class="actions col-xs-12">
-									<%= submit_tag "完了", class: "btn btn-success m-bottom col-xs-6 col-xs-offset-3" %>
+									<%= submit_tag "検索する", class: "btn btn-success m-bottom col-xs-6 col-xs-offset-3" %>
 									<button type="button" class="btn btn-default m-bottom col-xs-6 col-xs-offset-3" data-dismiss="modal">閉じる</button>
 								</div>
 

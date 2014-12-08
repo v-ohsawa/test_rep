@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 	match '/signin',  to: 'sessions#new',				via: 'get'
 	match '/signout', to: 'sessions#destroy',			via: 'delete'
 	match '/change_week',  to: 'week_reports#change_week',		via: 'get'
+	match '/copy_item',  to: 'week_reports#copy_item',		via: 'get'
 	match '/search_week_or_month',  to: 'all_reports#search_week_or_month',		via: 'post'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

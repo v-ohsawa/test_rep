@@ -77,6 +77,24 @@ def destroy
 	redirect_to controller:'week_reports', action:'change_week', start:session[:start_day]
 end
 
+#レコード複製
+	def copy_item
+		@start_day = Date.strptime(session[:start_day], "%Y-%m-%d")
+		@week_reports = WeekReport.where('user_id = ? AND start_day = ?', current_user.id, @start_day - 1.week)
+		@week_reports.each do |week_report|
+			new_record =week_report.dup
+			new_record.start_day = @start_day
+			if new_record.save
+			else
+				flash[:danger] = "コピーに失敗しました！"
+				redirect_to controller:'week_reports', action:'change_week', start:session[:start_day]
+			end
+		end
+		flash[:success] = "正しくコピーされました！"
+		redirect_to controller:'week_reports', action:'change_week', start:session[:start_day]
+	end
+
+
   private
     def set_week_report
       @week_report = WeekReport.find(params[:id])

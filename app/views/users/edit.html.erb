@@ -1,17 +1,17 @@
 <h4 class="text-center">ユーザーの情報を更新しましょう</h4>
 
-<div class="row">
+<div class="row m-bottom">
 	<div class="text-center col-xs-6 col-xs-offset-3">
 		<%= form_for(@user) do |f| %>
-		<%= render 'error_messages' %>
-		<%= f.label :worker_num, "社員番号" %>
-		<%= f.text_field :worker_num, class: "form-control text-center" %>
-		<%= f.label :name, "名前" %>
-		<%= f.text_field :name, class: "form-control text-center" %>
-		<%= f.label :group_id, "グループ" %>
-		<%= f.collection_select :group_id, Group.all.order(:id), :id, :name, {:include_blank => "グループ無し",:selected => @user.group_id}, {class: "form-control text-center"} %>
-		<%= f.submit "更新する", class: "btn btn-lg btn-primary col-xs-12 m-bottom m-top" %>
-		<%= link_to '前に戻る', users_path, class: "btn btn-lg btn-danger col-xs-12 m-bottom m-top" %>
-	<% end %>
+			<%= render 'error_messages' %>
+			<%= f.label :worker_num, "社員番号" %>
+			<%= f.text_field :worker_num, class: "form-control text-center", required: true %>
+			<%= f.label :name, "名前" %>
+			<%= f.text_field :name, class: "form-control text-center", required: true %>
+			<%= f.label :group_id, "グループ" %>
+			<%= f.collection_select :group_id, Group.all.order(:id), :id, :name, {:include_blank => "グループ無し",:selected => @user.group_id}, {class: "form-control text-center"} %>
+			<%= f.submit "更新する", class: "btn btn-lg btn-primary btn-block m-bottom" %>
+			<%= link_to '前に戻る', users_path, class: "btn btn-lg btn-danger btn-block" %>
+		<% end %>
 	</div>
 </div>

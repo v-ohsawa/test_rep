@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	has_many :week_reports, dependent: :destroy
 	has_many :projects, through: :week_reports
 	#　所属
-	belongs_to :group
+	belongs_to :user_group, class_name: "Group"
 	# 事前実行メソッド
 	before_create :create_remember_token
 	# has_secure_password

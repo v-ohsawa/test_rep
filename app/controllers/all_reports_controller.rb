@@ -26,6 +26,7 @@ def search_week_or_month
 	@end_day = @start_day.end_of_week - 2
 	@project = params[:item][:project_id]
 	@user = params[:item][:user_id]
+	@group = params[:item][:group_id]
 	get_report
 	judge_monthly
 	render 'index'
@@ -38,19 +39,30 @@ end
 
 private
 	def get_report
-		if @project.blank?
-			if @user.blank?
-				@all_reports = WeekReport.where(["start_day = ?", @start_day])
-			else
-				@all_reports = WeekReport.where(["start_day = ? and user_id = ?", @start_day, @user])
-			end
-		else
-			if @user.blank?
-				@all_reports = WeekReport.where(["start_day = ? and project_id = ?", @start_day, @project])
-			else
-				@all_reports = WeekReport.where(["start_day = ? and project_id = ? and user_id = ?", @start_day, @project, @user])
-			end
+		@all_reports = WeekReport.where(["start_day = ?", @start_day])
+		unless @project.blank?
+			@all_reports = @all_reports.where(["user_id = ?", @project])
 		end
+		unless @user.blank?
+			@all_reports = @all_reports.where(["project_id = ?", @user])
+		end
+		unless @group.blank?
+			@user = Group.where(["id = ?",@group]).users
+			#@all_reports = Group.where(["id = ?", @group]).weekreport.where(["user_id = ?", @project])
+		end
+		#if @project.blank?
+		#	if @user.blank?
+		#		@all_reports = WeekReport.where(["start_day = ?", @start_day])
+		#	else
+		#		@all_reports = WeekReport.where(["start_day = ? and user_id = ?", @start_day, @user])
+		#	end
+		#else
+		#	if @user.blank?
+		#		@all_reports = WeekReport.where(["start_day = ? and project_id = ?", @start_day, @project])
+		#	else
+		#		@all_reports = WeekReport.where(["start_day = ? and project_id = ? and user_id = ?", @start_day, @project, @user])
+		#	end
+		#end
 	end
 
 	def judge_monthly
