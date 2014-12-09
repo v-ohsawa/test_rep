@@ -4,12 +4,17 @@
 	<div class="text-center col-xs-6 col-xs-offset-3">
 		<%= form_for(@user) do |f| %>
 			<%= render 'error_messages' %>
-			<%= f.label :worker_num, "社員番号" %>
+			<label>管理者権限</label>
+			<div class="btn-group p-top m-bottom" data-toggle="buttons">
+				<label class="btn btn-default active"><%= f.radio_button :admin, false, {:checked => true} %>OFF</label>
+				<label class="btn btn-default"><%= f.radio_button :admin, true %>ON</label>
+			</div>
+			<%= f.label :worker_num, "社員番号",class: "col-xs-12" %>
 			<%= f.text_field :worker_num, class: "form-control text-center", required: true %>
 			<%= f.label :name, "名前" %>
 			<%= f.text_field :name, class: "form-control text-center", required: true %>
-			<%= f.label :group_id, "グループ" %>
-			<%= f.collection_select :group_id, Group.all.order(:id), :id, :name, {:include_blank => "グループ無し",:selected => @user.group_id}, {class: "form-control text-center"} %>
+			<%= f.label :user_group_id, "グループ" %>
+			<%= f.collection_select :user_group_id, UserGroup.all.order(:id), :id, :name, {:selected => @user_group}, {class: "form-control text-center"} %>
 			<%= f.submit "更新する", class: "btn btn-lg btn-primary btn-block m-bottom" %>
 			<%= link_to '前に戻る', users_path, class: "btn btn-lg btn-danger btn-block" %>
 		<% end %>

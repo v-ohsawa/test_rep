@@ -26,8 +26,11 @@ class UsersController < ApplicationController
 		redirect_to controller:'users', action:'index'
 	end
 	def destroy
-		@user.destroy
-		flash[:success] = "正しく削除されました！"
+		if @user.destroy
+			flash[:success] = "正しく削除されました！"
+		else
+			flash[:danger] = "正しく削除できませんでした！"
+		end
 		redirect_to controller:'users', action:'index'
 	end
 	private
@@ -35,6 +38,6 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 	def user_params
-		params.require(:user).permit(:name, :worker_num, :group_id, :password, :password_confirmation)
+		params.require(:user).permit(:name, :worker_num, :user_group_id, :password, :password_confirmation, :admin)
 	end
 end

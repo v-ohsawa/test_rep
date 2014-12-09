@@ -9,6 +9,7 @@
 				<th>社員番号</th>
 				<th>名前</th>
 				<th>グループ</th>
+				<th>管理者権限</th>
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -17,11 +18,12 @@
 			<tr>
 				<td><%= user.worker_num %></td>
 				<td><%= user.name %></td>
-				<td><%= user.group.try(:name) %></td>
+				<td><%= user.user_group.try(:name) %></td>
+				<td><%= user.admin %></td>
 				<td>
 					<%= link_to '編集する', edit_user_path(user), class: "btn btn-primary" %>
-					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#conf-box">削除する</button>
-					<div class="modal fade" id="conf-box" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<%= user.id %>">削除する</button>
+					<div class="modal fade" id="modal<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-body">本当に削除しますか？</div>

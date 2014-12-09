@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :week_reports
+	belongs_to :user_group
 	# 事前実行メソッド
 	before_create :create_remember_token
 	# has_secure_password

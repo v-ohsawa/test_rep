@@ -7,8 +7,8 @@
 			<td><%= simple_format(all_report.understood) %></td>
 			<td><%= simple_format(all_report.next) %></td>
 			<td>
-				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#conf-box">削除する</button>
-				<div class="modal fade" id="conf-box" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<%= all_report.id %>">削除する</button>
+				<div class="modal fade" id="modal<%= all_report.id %>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-body">本当に削除しますか？</div>

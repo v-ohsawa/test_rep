@@ -18,8 +18,8 @@
 				<td><%= user_group.updated_at %></td>
 				<td>
 					<%= link_to '編集する', edit_user_group_path(user_group), class: "btn btn-primary" %>
-					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#conf-box">削除する</button>
-					<div class="modal fade" id="conf-box" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<%= user_groups.id %>">削除する</button>
+					<div class="modal fade" id="modal<%= user_groups.id %>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-body">本当に削除しますか？</div>

@@ -4,12 +4,17 @@
 	<div class="text-center col-md-4 col-md-offset-4">
 		<%= form_for(@user) do |f| %>
 			<%= render 'error_messages' %>
-			<%= f.label :worker_num, "社員番号" %>
-			<%= f.text_field :worker_num, class: "form-control text-center text-center", required: true %>
+			<label>管理者権限</label>
+			<div class="btn-group p-top m-bottom" data-toggle="buttons">
+				<label class="btn btn-default active"><%= f.radio_button :admin, false, {:checked => true} %>OFF</label>
+				<label class="btn btn-default"><%= f.radio_button :admin, true %>ON</label>
+			</div>
+			<%= f.label :worker_num, "社員番号",class: "col-xs-12" %>
+			<%= f.text_field :worker_num, class: "form-control text-center", required: true %>
 			<%= f.label :name, "名前" %>
 			<%= f.text_field :name, class: "form-control text-center", required: true %>
-			<%= f.label :group_id, "グループ" %>
-			<%= f.collection_select :group_id, Group.all.order(:id), :id, :name, {:include_blank => "グループ無し",:selected => @project}, {class: "form-control text-center"} %>
+			<%= f.label :user_group_id, "グループ" %>
+			<%= f.collection_select :user_group_id, UserGroup.all.order(:id), :id, :name, {}, {class: "form-control text-center"} %>
 			<%= f.label :password, "パスワード" %>
 			<%= f.password_field :password, class: "form-control text-center", required: true %>
 			<%= f.label :password_confirmation, "パスワード確認" %>

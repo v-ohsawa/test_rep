@@ -6,8 +6,8 @@
 		<td><%= simple_format(week_report.next) %></td>
 		<td>
 			<%= link_to "編集する", edit_week_report_path(week_report),class: "btn btn-primary" %>
-			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#conf-box">削除する</button>
-			<div class="modal fade" id="conf-box" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<%= week_report.id %>">削除する</button>
+			<div class="modal fade" id="modal<%= week_report.id %>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">本当に削除しますか？</div>

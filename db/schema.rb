@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208060012) do
+ActiveRecord::Schema.define(version: 20141209110132) do
 
   create_table "projects", force: true do |t|
     t.integer  "code"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141208060012) do
   end
 
   create_table "users", force: true do |t|
-    t.integer  "group_id"
+    t.integer  "user_group_id"
     t.string   "name"
     t.integer  "worker_num"
     t.string   "password_digest"
