@@ -75,7 +75,7 @@
 			<div class="bg-<%= key %> al-bar text-<%= key %> text-center timeout" style="display:none;"><%= value %></div>
 			<% end %>
 					<script>
-						var storage = sessionStorage;
+						var storage = localStorage;
 						$(function(){
 							switch(storage.getItem('font-size')){
 								case '12':
@@ -102,7 +102,7 @@
 						});
 					</script>
 					<script>
-						var storage = sessionStorage;
+						var storage = localStorage;
 						$(".f-small").click(function(){
 							$("body").css("font-size","12px");
 							storage.setItem('font-size', '12');
@@ -117,7 +117,7 @@
 						});
 					</script>
 				<script>
-					var storage = sessionStorage;
+					var storage = localStorage;
 					$(function(){
 						switch(storage.getItem('background')){
 							case '1':
@@ -146,7 +146,7 @@
 					});
 				</script>
 				<script>
-					var storage = sessionStorage;
+					var storage = localStorage;
 					$(".back-1").click(function(){
 						$("html").css("background","#fff url(/assets/back.jpg) no-repeat fixed top center");
 						$("body").css("background-color","rgba(51,51,51,0.6)").css("color","#fff");
