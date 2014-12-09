@@ -1,7 +1,7 @@
 <div class="row">
 	<h3 class="text-center m-bottom">グループ一覧</h3>
 	<section class="text-center">
-		<%= link_to 'グループを追加する', new_group_path, class: "btn btn-success btn-lg" %>
+		<%= link_to 'グループを追加する', new_user_group_path, class: "btn btn-success btn-lg" %>
 	</section>
 	<table class="table p-top">
 		<thead>
@@ -12,12 +12,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @groups.each do |group| %>
+			<% @user_groups.each do |user_group| %>
 			<tr>
-				<td><%= group.name %></td>
-				<td><%= group.updated_at %></td>
+				<td><%= user_group.name %></td>
+				<td><%= user_group.updated_at %></td>
 				<td>
-					<%= link_to '編集する', edit_group_path(group), class: "btn btn-primary" %>
+					<%= link_to '編集する', edit_user_group_path(user_group), class: "btn btn-primary" %>
 					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#conf-box">削除する</button>
 					<div class="modal fade" id="conf-box" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
@@ -25,7 +25,7 @@
 								<div class="modal-body">本当に削除しますか？</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-									<%= link_to '削除', group, method: :delete, class: "btn btn-danger" %>
+									<%= link_to '削除', user_group, method: :delete, class: "btn btn-danger" %>
 								</div>
 							</div>
 						</div>

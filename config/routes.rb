@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	resources :all_reports, only: [:index]
-	resources :groups, except: [:show]
+	resources :user_groups, except: [:show]
 	resources :projects, except: [:show]
 	resources :users, except: [:show]
 	resources :user_settings, only: [:edit, :update]

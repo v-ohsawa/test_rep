@@ -60,7 +60,7 @@
 								<!--グループ指定-->
 								<div class="form-group col-xs-12">
 									<label>グループを選んで下さい</label>
-									<%= collection_select :item, :group_id, Group.all, :id, :name, {:include_blank => "指定なし",:selected => @group},{class: "form-control"} %>
+									<%= collection_select :item, :user_group_id, UserGroup.all, :id, :name, {:include_blank => "指定なし",:selected => @user_group},{class: "form-control"} %>
 								</div>
 
 								<!--ボタン-->

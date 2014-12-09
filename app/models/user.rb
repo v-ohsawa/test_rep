@@ -1,9 +1,5 @@
 class User < ActiveRecord::Base
-	# 所有
-	has_many :week_reports, dependent: :destroy
-	has_many :projects, through: :week_reports
-	#　所属
-	belongs_to :user_group, class_name: "Group"
+	has_many :week_reports
 	# 事前実行メソッド
 	before_create :create_remember_token
 	# has_secure_password

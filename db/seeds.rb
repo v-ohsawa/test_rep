@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # グループ
-Group.create(name: "技術一課")
-Group.create(name: "技術二課")
-Group.create(name: "基礎開発係")
-Group.create(name: "技術管理係")
+UserGroup.create(name: "技術一課")
+UserGroup.create(name: "技術二課")
+UserGroup.create(name: "基礎開発係")
+UserGroup.create(name: "技術管理係")
 
 # プロジェクト
 Project.create(code: 101, name: "その他")

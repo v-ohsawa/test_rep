@@ -43,7 +43,7 @@
 							<li class="divider"></li>
 							<li><%= link_to "プロジェクト管理", {controller:"projects", action:"index", id:current_user.id} %></li>
 							<li class="divider"></li>
-							<li><%= link_to "グループ管理", {controller:"groups", action:"index", id:current_user.id} %></li>
+							<li><%= link_to "グループ管理", {controller:"user_groups", action:"index", id:current_user.id} %></li>
 							<li class="divider"></li>
 							<% else %>
 							<% end %>

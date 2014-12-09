@@ -2,12 +2,12 @@
 
 <div class="row m-bottom">
 	<div class="text-center col-md-4 col-md-offset-4">
-		<%= form_for(@group) do |f| %>
+		<%= form_for(@user_group) do |f| %>
 		<%= render 'error_messages' %>
 		<%= f.label :name, "グループ名" %>
 		<%= f.text_field :name, class: "form-control text-center", required: true %>
 		<%= f.submit "作成する", class: "btn btn-lg btn-primary btn-block m-bottom" %>
-		<%= link_to '前に戻る', groups_path, class: "btn btn-lg btn-danger btn-block" %>
+		<%= link_to '前に戻る', user_groups_path, class: "btn btn-lg btn-danger btn-block" %>
 		<% end %>
 	</div>
 </div>
