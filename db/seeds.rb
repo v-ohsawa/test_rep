@@ -11,6 +11,7 @@ UserGroup.create(name: "技術一課")
 UserGroup.create(name: "技術二課")
 UserGroup.create(name: "基礎開発係")
 UserGroup.create(name: "技術管理係")
+UserGroup.create(name: "管理職")
 
 # プロジェクト
 Project.create(code: 101, name: "その他")
@@ -75,7 +76,7 @@ User.create!(group_id: 1,worker_num: 9403, name: "鎌田", password: "000000", p
 User.create!(group_id: 3,worker_num: 9704, name: "篠崎直也", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(group_id: 2,worker_num: 9806, name: "國枝", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(group_id: 2,worker_num: 9902, name: "石本", password: "000000", password_confirmation: "000000", admin: false)
-User.create!(group_id: 4,worker_num: 10001, name: "増子", password: "000000", password_confirmation: "000000", admin: false)
+User.create!(group_id: 4,worker_num: 10001, name: "増子", password: "000000", password_confirmation: "000000", admin: true)
 User.create!(group_id: 3,worker_num: 10304, name: "岡本", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(group_id: 2,worker_num: 10405, name: "片山", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(group_id: 1,worker_num: 10902, name: "木村真二", password: "000000", password_confirmation: "000000", admin: false)
@@ -85,11 +86,18 @@ User.create!(group_id: 1,worker_num: 11001, name: "村井", password: "000000", 
 User.create!(group_id: 1,worker_num: 11102, name: "高波", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(group_id: 4,worker_num: 11103, name: "大出", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(group_id: 1,worker_num: 11002, name: "殿村", password: "000000", password_confirmation: "000000", admin: false)
-User.create!(group_id: 1,worker_num: 11104, name: "大澤", password: "000000", password_confirmation: "000000", admin: false)
+User.create!(group_id: 1,worker_num: 11104, name: "大澤", password: "000000", password_confirmation: "000000", admin: true)
 User.create!(group_id: 1,worker_num: 11202, name: "海老澤", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(group_id: 1,worker_num: 11301, name: "澤田", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(group_id: 3,worker_num: 11302, name: "石田", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(group_id: 1,worker_num: 11303, name: "嶋田", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(group_id: 3,worker_num: 11404, name: "矢部", password: "000000", password_confirmation: "000000", admin: false)
+
+# 管理職
+User.create!(group_id: 5,worker_num: 10703, name: "内藤", password: "000000", password_confirmation: "000000", admin: false)
+User.create!(group_id: 5,worker_num: 9408, name: "池島", password: "000000", password_confirmation: "000000", admin: false)
+User.create!(group_id: 5,worker_num: 4904, name: "照沼", password: "000000", password_confirmation: "000000", admin: false)
+User.create!(group_id: 5,worker_num: 11310, name: "長嶋", password: "000000", password_confirmation: "000000", admin: false)
+User.create!(group_id: 5,worker_num: 8901, name: "須澤", password: "000000", password_confirmation: "000000", admin: false)
 #user = User.new(:worker_num => '11010', :name => '大澤', :password_digest => 'clover4to', :admin => 'true')
 #user.save!
