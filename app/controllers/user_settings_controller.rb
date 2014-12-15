@@ -1,5 +1,5 @@
 class UserSettingsController < ApplicationController
-	before_action :signed_in_user, only: [:edit, :update]
+	before_action :signed_in_user
 	before_action :correct_user,   only: [:edit, :update]
 
 	def edit
@@ -7,11 +7,11 @@ class UserSettingsController < ApplicationController
 
 	def update
 		if @user_setting.update(user_params)
-			flash[:success] = "Profile updated"
-			redirect_to controller:'week_reports', action:'index'
+			flash[:success] = "パスワードが正しく更新されました！"
 		else
-			redirect_to controller:'user_setting', action:'edit'
+			flash[:danger] = "パスワードが一致しません！"
 		end
+		redirect_to controller:'week_reports', action:'index'
 	end
 
 	private

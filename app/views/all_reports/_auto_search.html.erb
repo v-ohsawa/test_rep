@@ -1,6 +1,6 @@
 
 		<!--モーダルの開始ボタン-->
-			<section class="text-center">
+			<section class="text-center m-bottom">
 				<div class="btn-group" role="group">
 				<%= link_to "Prev",{controller:"all_reports", action:"change_week_or_month",start:@start_day - 1.week}, class: "btn btn-info btn-lg" %>
 				<%= link_to "Next",{controller:"all_reports", action:"change_week_or_month",start:@start_day + 1.week}, class: "btn btn-info btn-lg" %>
@@ -38,6 +38,19 @@
 									<label>目的の週や月を含む日付を選択して下さい</label>
 									<%= text_field  :item, :date, {value: @start_day.strftime('%Y年%m月%d日'),class: "form-control datetimepicker"} %>
 								</div>
+								<!--ボタン-->
+								<div class="actions col-xs-12">
+									<%= submit_tag "検索する", class: "btn btn-success m-bottom col-xs-6 col-xs-offset-3" %>
+									<button type="button" class="btn btn-default m-bottom col-xs-6 col-xs-offset-3" data-dismiss="modal">閉じる</button>
+								</div>
+							<% end %>
+						</section>
+					</div>
+					<!--モーダルコンテンツ終了-->
+				</div>
+			</div>
+		</div>
+		<!--モーダル終了-->
 
 								<script>
 									$(".datetimepicker").datetimepicker({
@@ -48,34 +61,26 @@
 								</script>
 
 								<!--プロジェクト指定-->
-								<div class="form-group col-xs-12">
-									<label>プロジェクトを選んで下さい</label>
-									<%= collection_select :item, :project_id, Project.all.order(:code), :id, :project_id_and_name, {:include_blank => "全てのプロジェクト",:selected => @project},{class: "form-control"} %>
+							<%= form_tag("/filter_project") do %>
+								<div class="form-group col-xs-4 text-center">
+									<label>プロジェクト</label>
+									<%= collection_select :item, :project_id, Project.all.order(:code), :id, :project_id_and_name, {:include_blank => "全てのプロジェクト",:selected => @project},{class: "form-control", onchange: "this.form.submit();"} %>
 								</div>
+							<% end %>
 
 								<!--メンバー指定-->
-								<div class="form-group col-xs-12">
-									<label>メンバーを選んで下さい</label>
-									<%= collection_select :item, :user_id, User.where.not(admin:true).order(:worker_num), :id, :user_id_and_name, {:include_blank => "全員",:selected => @user},{class: "form-control"} %>
+							<%= form_tag("/filter_member") do %>
+								<div class="form-group col-xs-4 text-center">
+									<label>メンバー</label>
+									<%= collection_select :item, :user_id, User.where.not(admin:true).order(:worker_num), :id, :user_id_and_name, {:include_blank => "全員",:selected => @user},{class: "form-control", onchange: "this.form.submit();"} %>
 								</div>
+							<% end %>
 
 								<!--グループ指定-->
-								<div class="form-group col-xs-12">
-									<label>グループを選んで下さい</label>
-									<%= collection_select :item, :user_group_id, UserGroup.all, :id, :name, {:include_blank => "指定なし",:selected => @user_group},{class: "form-control"} %>
+							<%= form_tag("/filter_group") do %>
+								<div class="form-group col-xs-4 text-center">
+									<label>グループ</label>
+									<%= collection_select :item, :user_group_id, UserGroup.all, :id, :name, {:include_blank => "指定なし",:selected => @user_group},{class: "form-control", onchange: "this.form.submit();"} %>
 								</div>
-
-								<!--ボタン-->
-								<div class="actions col-xs-12">
-									<%= submit_tag "検索する", class: "btn btn-success m-bottom col-xs-6 col-xs-offset-3" %>
-									<button type="button" class="btn btn-default m-bottom col-xs-6 col-xs-offset-3" data-dismiss="modal">閉じる</button>
-								</div>
-
 							<% end %>
-						</section>
-					</div>
-					<!--モーダルコンテンツ終了-->
-				</div>
-			</div>
-		</div>
-		<!--モーダル終了-->
+

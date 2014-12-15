@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 	match '/change_week',  to: 'week_reports#change_week',		via: 'get'
 	match '/copy_item',  to: 'week_reports#copy_item',		via: 'get'
 	match '/search_week_or_month',  to: 'all_reports#search_week_or_month',		via: 'post'
+	match '/change_week_or_month',  to: 'all_reports#change_week_or_month',		via: 'get'
+	match '/filter_project',  to: 'all_reports#filter_project',		via: 'post'
+	match '/filter_member',  to: 'all_reports#filter_member',		via: 'post'
+	match '/filter_group',  to: 'all_reports#filter_group',		via: 'post'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

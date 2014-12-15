@@ -1,7 +1,9 @@
 class ProjectsController < ApplicationController
+	before_action :signed_in_user
 	before_action :set_project, only: [:edit, :update, :destroy]
+
 	def index
-		@projects = Project.all
+		@projects = Project.all.order(:code)
 	end
 	def new
 		@project = Project.new

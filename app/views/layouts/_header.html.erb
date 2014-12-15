@@ -39,11 +39,11 @@
 							<li><%= link_to "パスワード変更", {controller:"user_settings", action:"edit", id:current_user.id} %></li>
 							<li class="divider"></li>
 							<% if current_user.admin? %>
-							<li><%= link_to "ユーザー管理", {controller:"users", action:"index", id:current_user.id} %></li>
+							<li><%= link_to "ユーザー管理", {controller:"users", action:"index"} %></li>
 							<li class="divider"></li>
-							<li><%= link_to "プロジェクト管理", {controller:"projects", action:"index", id:current_user.id} %></li>
+							<li><%= link_to "プロジェクト管理", {controller:"projects", action:"index"} %></li>
 							<li class="divider"></li>
-							<li><%= link_to "グループ管理", {controller:"user_groups", action:"index", id:current_user.id} %></li>
+							<li><%= link_to "グループ管理", {controller:"user_groups", action:"index"} %></li>
 							<li class="divider"></li>
 							<% else %>
 							<% end %>
@@ -85,13 +85,13 @@
 									$(".f-big").removeClass("active");
 									break;
 								case '16':
-									$("body").css("font-size","16px");
+									$("body,textarea").css("font-size","16px");
 									$(".f-small").removeClass("active");
 									$(".f-medium").addClass("active");
 									$(".f-big").removeClass("active");
 									break;
 								case '20':
-									$("body").css("font-size","20px");
+									$("body,textarea").css("font-size","20px");
 									$(".f-small").removeClass("active");
 									$(".f-medium").removeClass("active");
 									$(".f-big").addClass("active");
@@ -104,15 +104,15 @@
 					<script>
 						var storage = localStorage;
 						$(".f-small").click(function(){
-							$("body").css("font-size","12px");
+							$("body,textarea").css("font-size","12px");
 							storage.setItem('font-size', '12');
 						});
 						$(".f-medium").click(function(){
-							$("body").css("font-size","16px");
+							$("body,textarea").css("font-size","16px");
 							storage.setItem('font-size', '16');
 						});
 						$(".f-big").click(function(){
-							$("body").css("font-size","20px");
+							$("body,textarea").css("font-size","20px");
 							storage.setItem('font-size', '20');
 						});
 					</script>
@@ -173,4 +173,15 @@
 						storage.setItem('background', 'off');
 					});
 				</script>
+	<script>
+		$(document).ready(function(){
+			$(window).scroll(function(){
+				if ($(this).scrollTop() > 0){
+					$(".navbar").css('background-color', "rgba(255,255,255,0.9)");
+				}else{
+					$(".navbar").css('background-color', "rgba(255,255,255,1.0)");
+				}
+			});
+		});
+	</script>
 </header>
